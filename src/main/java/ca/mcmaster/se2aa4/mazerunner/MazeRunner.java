@@ -5,12 +5,10 @@ import org.apache.logging.log4j.Logger;
 
 public abstract class MazeRunner {
     private static final Logger logger = LogManager.getLogger();
-    private Maze maze;
-    private Entry entry;
+    private final Maze maze;
 
     public MazeRunner(Maze maze) {
         this.maze = maze;
-        entry = new Entry(maze);
     }
 
     public abstract boolean MazeRunnerAlgorithm();

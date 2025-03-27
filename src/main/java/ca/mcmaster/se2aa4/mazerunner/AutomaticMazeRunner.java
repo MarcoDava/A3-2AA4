@@ -7,14 +7,12 @@ import org.apache.logging.log4j.Logger;
 
 public class AutomaticMazeRunner extends MazeRunner {
     private static final Logger logger = LogManager.getLogger();
-    private Path path=new Path();
-    private Position position;
-    private Maze maze;
-    private Exit exit;
-    private Entry entry;
+    private final Path path=new Path();
+    private final Position position;
+    private final Exit exit;
+    private final Entry entry;
     public AutomaticMazeRunner(Maze maze) {
         super(maze);
-        this.maze = maze;
         exit = new Exit(maze);
         entry = new Entry(maze);
         position=new Position(entry.getEntryPoint());

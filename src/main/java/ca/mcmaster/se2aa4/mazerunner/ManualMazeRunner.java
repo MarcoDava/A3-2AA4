@@ -7,10 +7,10 @@ import org.apache.logging.log4j.Logger;
 
 public class ManualMazeRunner extends MazeRunner {                  
     private static final Logger logger = LogManager.getLogger();
-    private Position position;
-    private Exit exit;
-    private Entry entry;
-    private String inputMoves;
+    private final Position position;
+    private final Exit exit;
+    private final Entry entry;
+    private final String inputMoves;
 
 
     public ManualMazeRunner(Maze maze,String inputMoves) {
