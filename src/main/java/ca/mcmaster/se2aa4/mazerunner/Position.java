@@ -1,15 +1,17 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
-public class Position{
+public class Position extends SubjectList{
     private int[] position;
-    private Direction direction = Direction.EAST;
-
+    private Direction direction = Direction.EAST;//use observer for position
+    //use either builder or factory to make the objects
+    //
     Position(int[] position) {
         this.position = position;
     }
-    
+
     public void setPosition(int[] newPosition) {
         position = newPosition;
+        notifyObservers();
     }
     public int[] getPosition(){
         return position;
@@ -87,5 +89,6 @@ public class Position{
         } else if (direction.equals(Direction.WEST)) {
             position[1]--;
         }
+        notifyObservers();
     }
 }

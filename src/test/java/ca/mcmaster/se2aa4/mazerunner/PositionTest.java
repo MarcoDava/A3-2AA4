@@ -1,7 +1,7 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PositionTest {
 
@@ -16,7 +16,7 @@ class PositionTest {
     void testTurnLeft() {
         Position position = new Position(new int[]{1, 1});
         position.turnLeft();
-        assertArrayEquals(new int[]{1, 0}, position.peekForward());
+        assertArrayEquals(new int[]{0, 1}, position.peekForward());
     }
 
     @Test

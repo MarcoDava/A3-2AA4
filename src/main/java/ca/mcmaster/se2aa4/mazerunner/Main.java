@@ -8,7 +8,7 @@ import org.apache.commons.cli.ParseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Main {
+public class Main {//dont forget to remove all logging statements
 
     private static final Logger logger = LogManager.getLogger();
     private static Maze maze;
