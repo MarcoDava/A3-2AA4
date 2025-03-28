@@ -7,11 +7,12 @@ public class Position extends SubjectList{
     //
     Position(int[] position) {
         this.position = position;
+        this.notifyObservers();
     }
 
     public void setPosition(int[] newPosition) {
-        position = newPosition;
-        notifyObservers();
+        this.position = newPosition;
+        this.notifyObservers();
     }
     public int[] getPosition(){
         return position;

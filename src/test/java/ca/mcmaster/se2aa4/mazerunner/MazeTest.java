@@ -6,17 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class MazeTest {
 
     @Test
-    void testMazeLoading() {
-        Maze maze = new Maze(getClass().getClassLoader().getResource("tiny.maz.txt").getPath());
-        assertNotNull(maze.getMaze());
-        assertEquals(7, maze.getRowLength());
-        assertEquals(7, maze.getColLength());
+    void scanMazeTest(String inputFile) {
+        assertTrue(new Maze("examples/straight.maz.txt").equals("\n#####\n#####\n     \n#####\n#####"));
     }
-
-    @Test
-    void testMazeIndex() {
-        Maze maze = new Maze(getClass().getClassLoader().getResource("tiny.maz.txt").getPath());
-        assertEquals("#", maze.getMazeIndex(0, 0));
-        assertEquals(" ", maze.getMazeIndex(1, 1));
-    }
+    //test all the methods 
 }

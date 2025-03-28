@@ -14,7 +14,7 @@ public class Maze {
         scanMaze(inputFile);
     }
 
-    public String[][] scanMaze(String inputFile) {
+    private String[][] scanMaze(String inputFile) {
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
             String line;
             int rowCount = 0;
@@ -43,23 +43,6 @@ public class Maze {
             logger.error("An error occurred while reading the maze file", e);
         }
         return mazeArray;
-    }
-
-    public String[][] getMaze() {
-        return mazeArray;
-    }
-
-    public void setMaze(String[][] mazeArray) {
-        this.mazeArray = mazeArray;
-    }
-
-    public void printMaze() {
-        for (int i = 0; i < mazeArray.length; i++) {
-            for (int j = 0; j < mazeArray[i].length; j++) {
-                logger.info(mazeArray[i][j]);
-            }
-            logger.info(System.lineSeparator());
-        }
     }
 
     public int getRowLength(){
