@@ -1,22 +1,52 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
-public class Position extends SubjectList{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Position implements SubjectList {
+
     private int[] position;
-    private Direction direction = Direction.EAST;//use observer for position
+    private Direction direction = Direction.EAST;
+    private final List<Observer> observers = new ArrayList<>();
+
+    //use observer for position
     //use either builder or factory to make the objects
     //
     Position(int[] position) {
         this.position = position;
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : this.observers) {
+            observer.updateValues(new Position(this.position));
+        }
+    }
+
+    public void moveRow(int row) {
+        position[0] = position[0]+row;
         this.notifyObservers();
     }
 
-    public void setPosition(int[] newPosition) {
-        this.position = newPosition;
+    public void moveCol(int col){
+        position[1] = position[1]+col;
         this.notifyObservers();
     }
-    public int[] getPosition(){
+
+    public int[] getPosition() {
         return position;
     }
+
     public int[] peekForward() {
         if (direction.equals(Direction.NORTH)) {
             return new int[]{position[0] - 1, position[1]};
@@ -56,40 +86,11 @@ public class Position extends SubjectList{
         return position;
     }
 
-    public void turnLeft() {
-        if (direction.equals(Direction.NORTH)) {
-            direction=Direction.WEST;
-        } else if (direction.equals(Direction.SOUTH)) {
-            direction=Direction.EAST;
-        } else if (direction.equals(Direction.EAST)) {
-            direction=Direction.NORTH;
-        } else if (direction.equals(Direction.WEST)) {
-            direction=Direction.SOUTH;
-        }
+    public void setDirection(Direction direction){
+        this.direction=direction;
     }
 
-    public void turnRight() {
-        if (direction.equals(Direction.NORTH)) {
-            direction=Direction.EAST;
-        } else if (direction.equals(Direction.SOUTH)) {
-            direction=Direction.WEST;
-        } else if (direction.equals(Direction.EAST)) {
-            direction=Direction.SOUTH;
-        } else if (direction.equals(Direction.WEST)) {
-            direction=Direction.NORTH;
-        }
-    }
-
-    public void moveForward() {
-        if (direction.equals(Direction.NORTH)) {
-            position[0]--;
-        } else if (direction.equals(Direction.SOUTH)) {
-            position[0]++;
-        } else if (direction.equals(Direction.EAST)) {
-            position[1]++;
-        } else if (direction.equals(Direction.WEST)) {
-            position[1]--;
-        }
-        notifyObservers();
+    public Direction getDirection(){
+        return direction;
     }
 }

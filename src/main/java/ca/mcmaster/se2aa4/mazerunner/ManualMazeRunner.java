@@ -5,13 +5,12 @@ import java.util.Arrays;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class ManualMazeRunner extends MazeRunner {
+public class ManualMazeRunner extends MazeRunner implements Observer{
     private static final Logger logger = LogManager.getLogger();
-    private final Position position;
+    private Position position;
     private final Exit exit;
     private final Entry entry;
     private final String inputMoves;
-    private PositionObserver positionObserver;
 
     public ManualMazeRunner(Maze maze, String inputMoves) {
         super(maze);
@@ -19,28 +18,33 @@ public class ManualMazeRunner extends MazeRunner {
         this.exit = new Exit(maze);
         this.entry = new Entry(maze);
         this.position = new Position(entry.getEntryPoint());
-        this.positionObserver = new PositionObserver(position);
+    }
+
+    @Override
+    public void updateValues(Position position){
+        this.position=position;
     }
 
     @Override
     public boolean MazeRunnerAlgorithm() {
         for (int i = 0; i < inputMoves.length(); i++) {
             char move = inputMoves.charAt(i);
+            Command command;
             if (move == 'F') {
                 if (!isWall(position.peekForward())) {
-                    position.moveForward();
+                    command=new ForwardCommand(position);
                 } else {
-                    logger.info("Cannot move forward");
                     return false;
                 }
             } else if (move == 'R') {
-                position.turnRight();
+                command = new RightCommand(position);
             } else if (move == 'L') {
-                position.turnLeft();
+                command = new LeftCommand(position);
             } else {
                 logger.info("Invalid input");
                 return false;
             }
+            command.execute();
         }
         if (Arrays.equals(position.getPosition(), exit.getExitPoint())) {
             logger.info("Maze has been solved");
