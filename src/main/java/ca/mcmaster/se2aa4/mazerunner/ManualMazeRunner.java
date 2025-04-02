@@ -41,16 +41,13 @@ public class ManualMazeRunner extends MazeRunner implements Observer{
             } else if (move == 'L') {
                 command = new LeftCommand(position);
             } else {
-                logger.info("Invalid input");
                 return false;
             }
             command.execute();
         }
         if (Arrays.equals(position.getPosition(), exit.getExitPoint())) {
-            logger.info("Maze has been solved");
             return true;
         }
-        logger.info("Maze has not been solved");
         return false;
     }
 }

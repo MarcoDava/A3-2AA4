@@ -11,4 +11,11 @@ class AutomaticMazeRunnerTest {
         AutomaticMazeRunner runner = new AutomaticMazeRunner(maze);
         assertTrue(runner.MazeRunnerAlgorithm());
     }
+
+    @Test
+    void testAutomaticMazeRunnerSuccessHarder() {
+        Maze maze = new Maze("examples/giant.maz.txt");
+        AutomaticMazeRunner runner = new AutomaticMazeRunner(maze);
+        assertTrue(runner.MazeRunnerAlgorithm());
+    }
 }

@@ -50,7 +50,8 @@ class CommandTest {
     void testTurnAroundCommand() {
         Position position = new Position(new int[]{1,2});
         Command command = new TurnAroundCommand(position);
-        command.execute();    
+        command.execute();
+        assertTrue(position.getDirection().equals(Direction.WEST));       
         assertArrayEquals(new int[]{1,1},position.getPosition());
     }
 }
