@@ -15,10 +15,12 @@ public class AutomaticMazeRunner extends MazeRunner implements Observer {
         position = new Position(entry.getEntryPoint());
     }
 
-    @Override 
-    public void updateValues(Position position){
-        this.position=position;
-    } 
+    @Override
+    public void updateValues(Position updatedPosition) {
+        // Update the internal state of the existing Position object
+        this.position.setPosition(updatedPosition.getPosition());
+        this.position.setDirection(updatedPosition.getDirection());
+    }
 
     @Override
     public boolean MazeRunnerAlgorithm() {

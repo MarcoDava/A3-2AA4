@@ -33,6 +33,10 @@ public class Position implements SubjectList {
         }
     }
 
+    public void setPosition(int[] position){
+        this.position=position;
+    }
+
     public void moveRow(int row) {
         position[0] = position[0]+row;
         this.notifyObservers();

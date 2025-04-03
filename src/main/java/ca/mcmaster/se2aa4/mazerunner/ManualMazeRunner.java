@@ -21,10 +21,10 @@ public class ManualMazeRunner extends MazeRunner implements Observer{
     }
 
     @Override
-    public void updateValues(Position position){
-        this.position=position;
+    public void updateValues(Position updatedPosition) {
+        this.position.setPosition(updatedPosition.getPosition());
+        this.position.setDirection(updatedPosition.getDirection());
     }
-
     @Override
     public boolean MazeRunnerAlgorithm() {
         for (int i = 0; i < inputMoves.length(); i++) {
