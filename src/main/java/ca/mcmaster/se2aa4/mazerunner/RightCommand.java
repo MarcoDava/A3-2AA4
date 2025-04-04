@@ -1,12 +1,23 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
-public class RightCommand extends Command{
-    public RightCommand(Position position){
+/**
+ * RightCommand changes the direction of the runner to the right.
+ */
+public class RightCommand extends Command {
+    /**
+     * Constructor for RightCommand.
+     *
+     * @param position The current position of the runner.
+     */
+    public RightCommand(Position position) {
         super(position);
     }
 
+    /**
+     * Executes the command to turn the runner to the right.
+     */
     @Override
-    public void execute(){
+    public void execute() {
         if (direction.equals(Direction.NORTH)) {
             position.setDirection(Direction.EAST);
         } else if (direction.equals(Direction.SOUTH)) {
