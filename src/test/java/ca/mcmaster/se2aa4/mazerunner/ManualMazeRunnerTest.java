@@ -16,7 +16,7 @@ class ManualMazeRunnerTest {
     @Test
     void testManualMazeRunnerFailure() {
         Maze maze = new Maze("examples/tiny.maz.txt");
-        ManualMazeRunner runner = new ManualMazeRunner(maze, "FFFF");
+        ManualMazeRunner runner = new ManualMazeRunner(maze, "FFRFF");
         assertFalse(runner.MazeRunnerAlgorithm());
     }
 }

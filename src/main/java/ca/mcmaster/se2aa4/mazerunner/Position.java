@@ -9,9 +9,6 @@ public class Position implements SubjectList {
     private Direction direction = Direction.EAST;
     private final List<Observer> observers = new ArrayList<>();
 
-    //use observer for position
-    //use either builder or factory to make the objects
-    //
     Position(int[] position) {
         this.position = position;
     }

@@ -17,7 +17,6 @@ public class AutomaticMazeRunner extends MazeRunner implements Observer {
 
     @Override
     public void updateValues(Position updatedPosition) {
-        // Update the internal state of the existing Position object
         this.position.setPosition(updatedPosition.getPosition());
         this.position.setDirection(updatedPosition.getDirection());
     }
@@ -28,7 +27,7 @@ public class AutomaticMazeRunner extends MazeRunner implements Observer {
         Command command;
         while (!atEnd) {
             if (!isWall(position.peekRight())) {
-                command=new MoveRightCommand(position);
+                command = new MoveRightCommand(position);
                 path.addPath("RF");
             } else if (!isWall(position.peekForward())) {
                 command = new ForwardCommand(position);
@@ -41,11 +40,13 @@ public class AutomaticMazeRunner extends MazeRunner implements Observer {
                 path.addPath("LLF");
             }
             command.execute();
+
             if (Arrays.equals(exit.getExitPoint(), position.getPosition())) {
                 atEnd = true;
             }
         }
         if (Arrays.equals(position.getPosition(), exit.getExitPoint())) {
+            System.out.println(path.getFactorizedPath());
             return true;
         } else {
             return false;

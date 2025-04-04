@@ -2,11 +2,7 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 import java.util.Arrays;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public class ManualMazeRunner extends MazeRunner implements Observer{
-    private static final Logger logger = LogManager.getLogger();
     private Position position;
     private final Exit exit;
     private final Entry entry;
@@ -41,13 +37,16 @@ public class ManualMazeRunner extends MazeRunner implements Observer{
             } else if (move == 'L') {
                 command = new LeftCommand(position);
             } else {
+                System.out.println("incorrect path");
                 return false;
             }
             command.execute();
         }
         if (Arrays.equals(position.getPosition(), exit.getExitPoint())) {
+            System.out.println("correct path");
             return true;
         }
+        System.out.println("incorrect path");
         return false;
     }
 }

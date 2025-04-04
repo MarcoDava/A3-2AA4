@@ -15,11 +15,10 @@ public class MoveRightCommand extends Command{
             position.moveCol(-1);
         } else if (direction.equals(Direction.EAST)) {
             position.setDirection(Direction.SOUTH);
-            position.moveRow(-1);
+            position.moveRow(1);
         } else if (direction.equals(Direction.WEST)) {
             position.setDirection(Direction.NORTH);
-            position.moveRow(1);
+            position.moveRow(-1);
         }
-
     }
 }

@@ -3,11 +3,8 @@ package ca.mcmaster.se2aa4.mazerunner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class Maze {
-    private static final Logger logger = LogManager.getLogger();
     String[][] mazeArray;
 
     public Maze(String inputFile) {
@@ -40,7 +37,7 @@ public class Maze {
             reader2.close();
             
         } catch (IOException e) {
-            logger.error("An error occurred while reading the maze file", e);
+            System.out.println("Could not read file");
         }
         return mazeArray;
     }

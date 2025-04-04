@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 class AutomaticMazeRunnerTest {
 
     @Test
-    void testAutomaticMazeRunnerSuccess() {
+    void testAutomaticMazeRunnerAlgorithm() {
         Maze maze = new Maze("examples/tiny.maz.txt");
         AutomaticMazeRunner runner = new AutomaticMazeRunner(maze);
         assertTrue(runner.MazeRunnerAlgorithm());
     }
 
     @Test
-    void testAutomaticMazeRunnerSuccessHarder() {
+    void testAutomaticMazeRunnerAlgorithmsHarder() {
         Maze maze = new Maze("examples/giant.maz.txt");
         AutomaticMazeRunner runner = new AutomaticMazeRunner(maze);
         assertTrue(runner.MazeRunnerAlgorithm());

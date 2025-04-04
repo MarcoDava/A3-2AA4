@@ -35,7 +35,7 @@ class CommandTest {
         Position position = new Position(new int []{2,1});
         Command command = new MoveLeftCommand(position);
         command.execute();
-        assertArrayEquals(new int[]{3, 1}, position.getPosition());
+        assertArrayEquals(new int[]{1, 1}, position.getPosition());
     }
 
     @Test 
@@ -43,7 +43,7 @@ class CommandTest {
         Position position = new Position(new int []{2,1});
         Command command = new MoveRightCommand(position);
         command.execute();
-        assertArrayEquals(new int[]{1, 1}, position.getPosition());
+        assertArrayEquals(new int[]{3, 1}, position.getPosition());
     }
 
     @Test

@@ -16,6 +16,5 @@ public class ForwardCommand extends Command{
         } else if (direction.equals(Direction.WEST)) {
             position.moveCol(-1);
         }
-        position.notifyObservers();
     }
 }
