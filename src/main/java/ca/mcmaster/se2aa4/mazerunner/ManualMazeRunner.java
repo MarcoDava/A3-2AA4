@@ -2,7 +2,7 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 import java.util.Arrays;
 
-public class ManualMazeRunner extends MazeRunner implements Observer{
+public class ManualMazeRunner extends MazeRunner implements Observer {
     private Position position;
     private final Exit exit;
     private final Entry entry;
@@ -14,13 +14,14 @@ public class ManualMazeRunner extends MazeRunner implements Observer{
         this.exit = new Exit(maze);
         this.entry = new Entry(maze);
         this.position = new Position(entry.getEntryPoint());
+        position.addObserver(this);
     }
 
     @Override
     public void updateValues(Position updatedPosition) {
-        this.position.setPosition(updatedPosition.getPosition());
-        this.position.setDirection(updatedPosition.getDirection());
+        this.position = updatedPosition; 
     }
+
     @Override
     public boolean MazeRunnerAlgorithm() {
         for (int i = 0; i < inputMoves.length(); i++) {
@@ -28,8 +29,9 @@ public class ManualMazeRunner extends MazeRunner implements Observer{
             Command command;
             if (move == 'F') {
                 if (!isWall(position.peekForward())) {
-                    command=new ForwardCommand(position);
+                    command = new ForwardCommand(position);
                 } else {
+                    System.out.println("incorrect path");
                     return false;
                 }
             } else if (move == 'R') {

@@ -13,12 +13,12 @@ public class AutomaticMazeRunner extends MazeRunner implements Observer {
         exit = new Exit(maze);
         entry = new Entry(maze);
         position = new Position(entry.getEntryPoint());
+        position.addObserver(this);
     }
 
     @Override
     public void updateValues(Position updatedPosition) {
-        this.position.setPosition(updatedPosition.getPosition());
-        this.position.setDirection(updatedPosition.getDirection());
+        this.position = updatedPosition; // Directly use the updated Position object
     }
 
     @Override
